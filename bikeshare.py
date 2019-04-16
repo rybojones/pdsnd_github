@@ -2,9 +2,11 @@ import time
 import pandas as pd
 import numpy as np
 
+# CSV files provided by Udacity for analysis
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
+
 
 def get_filters():
     """
@@ -31,6 +33,7 @@ def get_filters():
 
             break
         except:
+            #notify user that the input is invalid
             print('Not a valid input for city.')
 
     # get user input for month (all, january, february, ... , june)
@@ -48,6 +51,7 @@ def get_filters():
 
             break
         except:
+            #notify user that the input is invalid
             print('Not a valid input for month.')
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
@@ -65,6 +69,7 @@ def get_filters():
 
             break
         except:
+            #notify user that the input is invalid
             print('Not a valid input for day of week.')
 
     print('-'*40)
@@ -111,7 +116,7 @@ def load_data(city, month, day):
 
 
 def show_raw_data(df):
-    """ Prompt the user a question asking whether or not they would like to see 5 lines of raw data and continues this prompt until the user says 'no' """
+    """ Prompt the user a question asking whether or not they would like to see 5 lines of raw data and continue this prompt until the user says 'no' """
 
     while True:
         # use a for loop in similar fashion as a generator function to repeatedly print the subsequent rows of data for as long as the user inputs 'yes'
@@ -244,6 +249,7 @@ def user_stats(df):
 
 def main():
     while True:
+        #user input saved to varibales
         city, month, day = get_filters()
         df = load_data(city, month, day)
 
