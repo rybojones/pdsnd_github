@@ -1,15 +1,19 @@
 ### Date created
-Include the date you created this project and README file.
+April 4 2019
 
 ### Project Title
-Replace the Project Title
+*Sakrilla* Bikeshare Analysis
 
 ### Description
-Describe what your project is about and what it does
+A user-friendly, interactive analysis tool for identifying bike-share use data.
 
 ### Files used
-Include the files used
+1. Executable Code
+..* bikeshare.py
+2. Data Files
+..* chicago.csv
+..* new_york_city.csv
+..* washington.csv
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
-
+Shoutout to Adam Pritchard and his [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) for helpful hints in formatting this very file, _README.md_!
