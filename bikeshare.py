@@ -19,15 +19,14 @@ def get_filters():
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     while True:
         try:
-            city = str(input('Enter the name of the city to filter by.  Choices include: Chicago, New York City or Washington.\nCity : '))
+            city = str(input('Enter the name of the city to filter by.  Choices include: Chicago, New York City or Washington.\nCity : ')).lower()
 
             # raise an error if the input does not match expected input
-            if city.title() not in ['Chicago', 'New York City', 'Washington']:
+            if city not in ['chicago', 'new york city', 'washington']:
                 raise ValueError
 
             #print the selection the user has made
-            print('\nYou have selected', city.title())
-            print()
+            print('\nYou have selected', city.title(),'\n')
 
             break
         except:
@@ -36,10 +35,10 @@ def get_filters():
     # get user input for month (all, january, february, ... , june)
     while True:
         try:
-            month = str(input('Enter the name of the month to filter by.  Choices include: January, February, March, April, May, June or All.\nMonth : '))
+            month = str(input('Enter the name of the month to filter by.  Choices include: January, February, March, April, May, June or All.\nMonth : ')).lower()
 
             # raise an error if the input does not match expected input
-            if month.title() not in ['January', 'February', 'March', 'April', 'May', 'June', 'All']:
+            if month not in ['january', 'february', 'march', 'april', 'may', 'june', 'all']:
                 raise ValueError
 
             #print the selection the user has made
@@ -53,10 +52,10 @@ def get_filters():
     # get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
         try:
-            day_of_week = str(input('Enter the day of week to filter by.  Choices include: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday or All.\nDay of Week : '))
+            day_of_week = str(input('Enter the day of week to filter by.  Choices include: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday or All.\nDay of Week : ')).lower()
 
             # raise an error if the input does not match expected input
-            if day_of_week.title() not in ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'All']:
+            if day_of_week not in ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday', 'all']:
                 raise ValueError
 
             #print the selection the user has made
