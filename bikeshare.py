@@ -112,22 +112,22 @@ def show_raw_data(df):
     """ Prompt the user a question asking whether or not they would like to see 5 lines of raw data and continues this prompt until the user says 'no' """
 
     while True:
-        # use a for loop in similar fashion as a generator function to repeatedly print the subsequent rows of data for as long as the user inputs 'yes'
+        # use a for loop in similar fashion as a generator function to repeatedly print the subsequent 5 rows of data for as long as the user inputs 'yes'
         for i in range(0, df.shape[0], 5):
             # get the user input to display the next five rows until the user inputs 'no'
             while True:
                 try:
-                    raw_input = input('\nWould you like to display 5 lines of raw data? Enter yes or no.\n')
+                    raw_input = input('\nWould you like to display 5 lines of raw data? Enter yes or no.\n').lower()
 
                     # raise an error if the input does not match expected input
-                    if raw_input.title() not in ['Yes', 'No']:
+                    if raw_input not in ['yes', 'no']:
                         raise ValueError
                     break
                 except:
                     print('Not a valid input.')
 
             # break the while loop if the user chooses not to display the raw data
-            if raw_input.lower() != 'yes':
+            if raw_input != 'yes':
                 break
             else:
                 # print the 'next' five rows of the dataframe
