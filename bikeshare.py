@@ -83,7 +83,7 @@ def load_data(city, month, day):
     """
 
     # load data file into a dataframe
-    df = pd.read_csv(CITY_DATA[city.lower()])   #loads correct CSV file even if camelCase is used
+    df = pd.read_csv(CITY_DATA[city])   #loads correct CSV file even if camelCase is used
 
     # convert the Start Time column to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
@@ -96,10 +96,9 @@ def load_data(city, month, day):
     if month != 'all':
         # use the index of the months list to get the corresponding int
         months = ['january', 'february', 'march', 'april', 'may', 'june']
-        month = months.index(month) + 1
 
         # filter by month to create the new dataframe
-        df = df[df['month'] == month]
+        df = df[df['month'] == months.index(month) + 1]
 
     # filter by day of week if applicable
     if day != 'all':
