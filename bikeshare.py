@@ -21,15 +21,14 @@ def get_filters():
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     while True:
         try:
-            city = str(input('Enter the name of the city to filter by.  Choices include: Chicago, New York City or Washington.\nCity : '))
+            city = str(input('Enter the name of the city to filter by.  Choices include: Chicago, New York City or Washington.\nCity : ')).lower()
 
             # raise an error if the input does not match expected input
-            if city.title() not in ['Chicago', 'New York City', 'Washington']:
+            if city not in ['chicago', 'new york city', 'washington']:
                 raise ValueError
 
             #print the selection the user has made
-            print('\nYou have selected', city.title())
-            print()
+            print('\nYou have selected', city.title(),'\n')
 
             break
         except:
@@ -39,10 +38,10 @@ def get_filters():
     # get user input for month (all, january, february, ... , june)
     while True:
         try:
-            month = str(input('Enter the name of the month to filter by.  Choices include: January, February, March, April, May, June or All.\nMonth : '))
+            month = str(input('Enter the name of the month to filter by.  Choices include: January, February, March, April, May, June or All.\nMonth : ')).lower()
 
             # raise an error if the input does not match expected input
-            if month.title() not in ['January', 'February', 'March', 'April', 'May', 'June', 'All']:
+            if month not in ['january', 'february', 'march', 'april', 'may', 'june', 'all']:
                 raise ValueError
 
             #print the selection the user has made
@@ -57,10 +56,10 @@ def get_filters():
     # get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
         try:
-            day_of_week = str(input('Enter the day of week to filter by.  Choices include: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday or All.\nDay of Week : '))
+            day_of_week = str(input('Enter the day of week to filter by.  Choices include: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday or All.\nDay of Week : ')).lower()
 
             # raise an error if the input does not match expected input
-            if day_of_week.title() not in ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'All']:
+            if day_of_week not in ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday', 'all']:
                 raise ValueError
 
             #print the selection the user has made
@@ -89,7 +88,7 @@ def load_data(city, month, day):
     """
 
     # load data file into a dataframe
-    df = pd.read_csv(CITY_DATA[city.lower()])   #loads correct CSV file even if camelCase is used
+    df = pd.read_csv(CITY_DATA[city])   #loads correct CSV file even if camelCase is used
 
     # convert the Start Time column to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
@@ -102,10 +101,9 @@ def load_data(city, month, day):
     if month != 'all':
         # use the index of the months list to get the corresponding int
         months = ['january', 'february', 'march', 'april', 'may', 'june']
-        month = months.index(month) + 1
 
         # filter by month to create the new dataframe
-        df = df[df['month'] == month]
+        df = df[df['month'] == months.index(month) + 1]
 
     # filter by day of week if applicable
     if day != 'all':
@@ -119,22 +117,22 @@ def show_raw_data(df):
     """ Prompt the user a question asking whether or not they would like to see 5 lines of raw data and continue this prompt until the user says 'no' """
 
     while True:
-        # use a for loop in similar fashion as a generator function to repeatedly print the subsequent rows of data for as long as the user inputs 'yes'
+        # use a for loop in similar fashion as a generator function to repeatedly print the subsequent 5 rows of data for as long as the user inputs 'yes'
         for i in range(0, df.shape[0], 5):
             # get the user input to display the next five rows until the user inputs 'no'
             while True:
                 try:
-                    raw_input = input('\nWould you like to display 5 lines of raw data? Enter yes or no.\n')
+                    raw_input = input('\nWould you like to display 5 lines of raw data? Enter yes or no.\n').lower()
 
                     # raise an error if the input does not match expected input
-                    if raw_input.title() not in ['Yes', 'No']:
+                    if raw_input not in ['yes', 'no']:
                         raise ValueError
                     break
                 except:
                     print('Not a valid input.')
 
             # break the while loop if the user chooses not to display the raw data
-            if raw_input.lower() != 'yes':
+            if raw_input != 'yes':
                 break
             else:
                 # print the 'next' five rows of the dataframe
